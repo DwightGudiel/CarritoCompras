@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecommerce - Tienda</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  </head>
+
+  <body>
+    <header class="container-xl header">
+      <div>
+        <h1 class="py-4 text-center">
+          Tienda <span class="text-primary">Muebles</span>
+        </h1>
+      </div>
+
+      <div>
+        <ul>
+          <li class="submenu">
+            <div class="logo-carrito">
+              <span class="agregados-carrito text-center"></span>
+              <img class="img-fluid" src="img/carrito.jpg" id="img-carrito" />
+            </div>
+            <div  id="carrito">
+              <table id="lista-carrito" class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody class="text-center"></tbody>
+              </table>
+
+              <p class="bg-primary text-white">Total Productos Agregados: <span class="total-productos"></span></p>
+
+              <p class="bg-danger text-white">Total Compra: Q<span class="total-Compra"></span></p>
+
+              <div class="d-flex gap-5 justify-content-center mt-5">
+                <a href="#" id="vaciar-carrito" class="btn btn-danger fs-4">Vaciar Carrito</a>
+
+                <a href="#" id="pagar-compra" class="btn btn-success fs-4">Finalizar Compra</a>
+              </div>
+            </div>
+          </li>
+          
+        </ul>
+      </div>
+    </header>
+
+    <div class="border-top py-4">
+      <div class="navbar navbar-expand-lg container navbar-light">
+        <!-- d-lg-none = display:none despues de 992px -->
+        <a
+          class="navbar-brand nombre-sitio d-lg-none fs-2 fw-bold text-uppercase"
+          href="index.html"
+        >
+          Tienda Muebles
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navegacion"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navegacion" class="collapse navbar-collapse">
+          <nav
+            class="navbar-nav container d-flex flex-md-row justify-content-md-between text-center"
+          >
+            <a class="text-dark text-decoration-none" href="index.html"
+              >Inicio</a
+            >
+            <a class="text-dark text-decoration-none" href="nosotros.html"
+              >Nosotros</a
+            >
+            <a class="text-dark text-decoration-none" href="tienda.html"
+              >Tienda</a
+            >
+            <a class="text-dark text-decoration-none" href="blog.html">Blog</a>
+            <a class="text-dark text-decoration-none" href="galeria.html"
+              >Galería</a
+            >
+            <a class="text-dark text-decoration-none" href="contacto.html"
+              >Contacto</a
+            >
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero"></div>
+
+    <main class="container-xl py-5" id="lista-productos">
+      <h2 class="text-center my-5">Nuestros Productos</h2>
+
+      <div class="row g-0 pt-5">
+        <div class="col-md-8 producto img-producto">
+          <img
+            class="img-fluid"
+            src="img/producto1.jpg"
+            alt="imagen de producto numero 1"
+          />
+        </div>
+        <div
+          class="info-producto col-md-4 bg-primary text-center p-5 text-white d-flex flex-column justify-content-center"
+        >
+          <h3 class="fw-bold">Producto 1</h3>
+
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum,
+            illum nihil
+          </p>
+
+          <p class="fs-1 fw-bold precio">Q <span>3000</span></p>
+
+          <a
+            href="#"
+            class="btn btn-success fs-3 fw-bold text-uppercase agregar-carrito"
+            data-id="1"
+            >Agregar al carrito</a
+          >
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-md-6">
+          <div  class="img-producto">
+            <img
+              class="img-fluid"
+              src="img/producto2.jpg"
+              alt="imagen de producto"
+            />
+          </div>
+
+          <div class="info-producto bg-primary text-center p-5 text-white">
+            <h3 class="fw-bold">Producto 2</h3>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum,
+              illum nihil
+            </p>
+
+            <p class="fs-1 fw-bold precio">Q <span>2000</span></p>
+
+            <a
+              href="#"
+              class="btn btn-success fs-3 fw-bold text-uppercase agregar-carrito"
+              data-id="2"
+              >Agregar al carrito</a
+            >
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="img-producto">
+            <img
+              class="img-fluid"
+              src="img/producto3.jpg"
+              alt="imagen de producto"
+            />
+          </div>
+
+          <div class="info-producto bg-primary text-center p-5 text-white">
+            <h3 class="fw-bold">Producto 3</h3>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum,
+              illum nihil
+            </p>
+
+            <p class="fs-1 fw-bold precio">Q <span>2500</span></p>
+
+            <a
+              href="#"
+              class="btn btn-success fs-3 fw-bold text-uppercase agregar-carrito"
+              data-id="3"
+              >Agregar al carrito</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-md-4">
+          <div class="img-producto">
+            <img
+              class="img-fluid "
+              src="img/producto4.jpg"
+              alt="imagen de producto"
+            />
+          </div>
+
+          <div class="info-producto bg-primary text-center p-5 text-white">
+            <h3 class="fw-bold">Producto 4</h3>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum,
+              illum nihil
+            </p>
+
+            <p class="fs-1 fw-bold precio">Q <span>4500</span></p>
+
+            <a
+              href="#"
+              class="btn btn-success fs-3 fw-bold text-uppercase agregar-carrito"
+              data-id="4"
+              >Agregar al carrito</a
+            >
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="img-producto">
+            <img
+              class="img-fluid "
+              src="img/producto5.jpg"
+              alt="imagen de producto"
+            />
+          </div>
+
+          <div class=" info-producto bg-primary text-center p-5 text-white">
+            <h3 class="fw-bold">Producto 5</h3>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum,
+              illum nihil
+            </p>
+
+            <p class="fs-1 fw-bold precio">Q <span>1500</span></p>
+
+            <a
+              href="#"
+              class="btn btn-success fs-3 fw-bold text-uppercase agregar-carrito"
+              data-id="5"
+              >Agregar al carrito</a
+            >
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="img-producto">
+            <img
+              class="img-fluid "
+              src="img/producto6.jpg"
+              alt="imagen de producto"
+            />
+          </div>
+
+          <div class="info-producto bg-primary text-center p-5 text-white">
+            <h3 class="fw-bold">Producto 6</h3>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum,
+              illum nihil
+            </p>
+
+            <p class="fs-1 fw-bold precio">Q <span>6500</span></p>
+
+            <a
+              href="#"
+              class="btn btn-success fs-3 fw-bold text-uppercase agregar-carrito"
+              data-id="6"
+              >Agregar al carrito</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+
+
+
+    <footer class="mt-5 pt-5 border-top">
+      <div class="container-xl">
+        <div class="row">
+          <div class="col-md-4">
+            <h3 class="text-center mt-5">Categorías</h3>
+            <nav class="d-flex flex-column text-center">
+              <a class="text-dark text-decoration-none" href="#">Cocina</a>
+              <a class="text-dark text-decoration-none" href="#">Oficina</a>
+              <a class="text-dark text-decoration-none" href="#">Jardín</a>
+              <a class="text-dark text-decoration-none" href="#">Cochera</a>
+              <a class="text-dark text-decoration-none" href="#">Dormitorio</a>
+            </nav>
+          </div>
+          <div class="col-md-4">
+            <h3 class="text-center mt-5">Sobre Nosotros</h3>
+            <nav class="d-flex flex-column text-center">
+              <a class="text-dark text-decoration-none" href="#"
+                >Nuestra historia</a
+              >
+              <a class="text-dark text-decoration-none" href="#"
+                >Misión,Visión y Valores</a
+              >
+              <a class="text-dark text-decoration-none" href="#">Carreras</a>
+              <a class="text-dark text-decoration-none" href="#"
+                >Política de Privacidad</a
+              >
+              <a class="text-dark text-decoration-none" href="#">Dormitorio</a>
+            </nav>
+          </div>
+          <div class="col-md-4">
+            <h3 class="text-center mt-5">Soporte</h3>
+            <nav class="d-flex flex-column text-center">
+              <a class="text-dark text-decoration-none" href="#"
+                >Preguntas Frecuentes</a
+              >
+              <a class="text-dark text-decoration-none" href="#"
+                >Ayuda en línea</a
+              >
+              <a class="text-dark text-decoration-none" href="#"
+                >Confianza y Seguridad</a
+              >
+            </nav>
+          </div>
+        </div>
+
+        <p class="text-center pt-5">
+          Todos los derechos Reservados &copy; Dwight 2022
+        </p>
+      </div>
+    </footer>
+    <script type="module" src="js/app.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  </body>
+</html>
