@@ -1,18 +1,18 @@
-import {showMessage} from "./alertas.js"
+import { showMessage } from "./alertas.js";
 
 export function carritoCompras() {
-
-
   const carrito = document.querySelector("#carrito");
   const contenedorCarrito = document.querySelector("#lista-carrito tbody");
   const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");
 
   const FinalizarCompraBtn = document.querySelector("#pagar-compra");
 
-  const listaCurso = document.querySelector("#lista-productos");
-  const pTotalCursosSeleccionados = document.querySelector(".total-productos");
+  const listaProductos = document.querySelector("#lista-productos");
+  const pTotalProductosSeleccionados =
+    document.querySelector(".total-productos");
   const pTotalPagarCompra = document.querySelector(".total-Compra");
-  const pCursoAgregadosCarrito = document.querySelector(".agregados-carrito");
+  const pProductosAgregadosCarrito =
+    document.querySelector(".agregados-carrito");
   let articulosCarrito = [];
 
   /* LLamando la función `cargarEventListener()` */
@@ -20,7 +20,7 @@ export function carritoCompras() {
 
   function cargarEventListener() {
     // Cuando agregas un curso presionando "Agregar al carrito"
-    listaCurso.addEventListener("click", agregarProducto);
+    listaProductos.addEventListener("click", agregarProducto);
 
     // Eliminar un curso del carrito
     carrito.addEventListener("click", eliminarProducto);
@@ -29,8 +29,17 @@ export function carritoCompras() {
     vaciarCarritoBtn.addEventListener("click", vaciarCarrito);
 
     //Finalizar Compra
-    FinalizarCompraBtn.addEventListener('click',finalizarCompra);
+    FinalizarCompraBtn.addEventListener("click", finalizarCompra);
 
+    getProductosCarrito();
+    // obtener productos almacenados en el local storage
+    function getProductosCarrito() {
+      articulosCarrito =
+        JSON.parse(localStorage.getItem("ProductosCarrito")) || [];
+
+      // Función para crear el HTML en el carrito
+      carritoHtml();
+    }
   }
 
   /*
@@ -38,8 +47,6 @@ export function carritoCompras() {
   Funciones para los eventos
   =================================================
  */
-
-
 
   function agregarProducto(e) {
     // Prevenir que los enlaces nos lleven a la parte de arriba de la página
@@ -57,50 +64,46 @@ export function carritoCompras() {
   }
 
   // vacias Carrito de compras
-  function vaciarCarrito(e){
+  function vaciarCarrito(e) {
     e.preventDefault();
 
-      articulosCarrito = [];
+    articulosCarrito = [];
 
-      // Función para eliminar HTML repetidos al agregar un curso
-      limpiarHtml();
+    // Función para eliminar HTML repetidos al agregar un curso
+    limpiarHtml();
 
-      /* Restablecer los valores de los elementos HTML */
-      pTotalCursosSeleccionados.textContent = "0";
-      pTotalPagarCompra.textContent = "0";
-      pCursoAgregadosCarrito.textContent = "Sin Productos";
+    /* Restablecer los valores de los elementos HTML */
+    pTotalProductosSeleccionados.textContent = "0";
+    pTotalPagarCompra.textContent = "0";
+    pProductosAgregadosCarrito.textContent = "Sin Productos";
   }
 
-  // Simulando Compra 
+  // Simulando Compra
   function finalizarCompra(e) {
-    if(articulosCarrito.length === 0){
-     showMessage("No hay productos a cancelar", "error");
+    if (articulosCarrito.length === 0) {
+      showMessage("No hay productos a cancelar", "error");
+    } else {
+      showMessage("Compra Exitosa", "success");
+      vaciarCarrito(e);
+      localStorage.clear();
     }
-    else{
-     showMessage("Compra Exitosa", "success");
-     vaciarCarrito(e);
-    }
- }
-
+  }
 
   // Eliminar Producto del carrito
   function eliminarProducto(e) {
     if (e.target.classList.contains("borrar-producto")) {
-
       // Obteniendo el ID del producto
       const productoId = e.target.getAttribute("data-id");
 
       // Eliminar del arreglo articulosCarrito por el data-id
       articulosCarrito = articulosCarrito.filter(
-
         /* Filtrar el array `articulosCarrito` por el `productoId` y devolver el array filtrado. */
         (producto) => producto.id !== productoId
       );
 
       // Función para crear el HTML en el carrito
       carritoHtml();
-
-    } 
+    }
   }
 
   // lee el contenido del HTML al que le dimos click y extrae la información del curso
@@ -153,8 +156,6 @@ export function carritoCompras() {
     carritoHtml();
   }
 
-
-  
   /*
     Crea una fila de tabla para cada artículo del carrito y, a continuación, añade el número total de artículos y el precio total de los artículos al carrito.
    */
@@ -200,9 +201,17 @@ export function carritoCompras() {
     });
 
     // Agregando al HTML
-    pTotalCursosSeleccionados.textContent = `${totalCursosSeleccionados}`;
+    pTotalProductosSeleccionados.textContent = `${totalCursosSeleccionados}`;
     pTotalPagarCompra.textContent = `${totalPagarCompra}`;
-    pCursoAgregadosCarrito.textContent = `${totalCursosSeleccionados}`;
+    pProductosAgregadosCarrito.textContent = `${totalCursosSeleccionados}`;
+
+     //almacenar productos en el local storage
+    setProductosCarrito();
+  }
+
+  function setProductosCarrito() {
+    //almacenar productos en el local storage
+    localStorage.setItem("ProductosCarrito", JSON.stringify(articulosCarrito));
   }
 
   /*
